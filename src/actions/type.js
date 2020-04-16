@@ -1,0 +1,1 @@
+export const MARKDOWN_TEXT = 'MARKDOWN_TEXT';

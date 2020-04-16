@@ -3,6 +3,13 @@ import marked from 'marked';
 
 class Preview extends React.Component {
   render() {
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      xhtml: true,
+      gfm: true,
+      breaks: true
+    });
+
     const markedownString = marked(this.props.previewText);
     return (
       <div

@@ -1,24 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PanelGroup from 'react-panelgroup';
 import './assets/css/index.scss';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
+import { markdownText } from './actions';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      editorText: '# hello world!'
-    }
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({
-      editorText: e.target.value
-    });
+    this.props.markdownText(e.target.value);
   }
 
   render() {
@@ -26,11 +22,17 @@ class App extends React.Component {
       <PanelGroup
         borderColor='grey'
         spacing={3}>
-          <Editor editorContent={this.state.editorText} onChange={this.handleChange} />
-          <Preview previewText={this.state.editorText} />
+          <Editor editorContent={this.props.editorText} onChange={this.handleChange} />
+          <Preview previewText={this.props.editorText} />
       </PanelGroup>
     );
   }
 }
 
-export default App;
+const MapStateToProps = state => {
+  return {
+    editorText: state.editorText
+  }
+}
+
+export default connect(MapStateToProps, { markdownText })(App);
