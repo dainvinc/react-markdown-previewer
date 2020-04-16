@@ -1,0 +1,19 @@
+$editorBackground: #282c34;
+$editorText: white;
+$previewBackground: #008080;
+$previewText: #f5f5dc;
+
+#editor {
+  background: $editorBackground;
+  color: $editorText;
+  font-family: monospace;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+#preview {
+  background-color: $previewBackground;
+  color: $previewText;
+  min-width: 100%;
+  min-height: 100vh;
+}
